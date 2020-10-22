@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Heptacore{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/carrusel.js' %}"></script>
+    <script src="{% static 'js/carro.js' %}"></script>
+    
+</head>
+
+<body>
+    <div class="nav">
+        <div class="nav__logo">
+            <a href="/"><img class="nav__logo__image" src="{% static 'img/logo-azul-inicio.png' %}" alt="Heptacore"></a>
+        </div>
+        <div class="nav__search">
+            <!-- <input class="input" type="text" name="search" id="search" placeholder="Busca tus productos!"> -->
+            <div class="input-group center-fix">
+                <div class="input-group__icon">
+                    <i class="lnr lnr-magnifier"></i>
+                </div>
+                <input type="text" placeholder="Busca tus productos!" name="search" id="search" class="input-group__input">
+            </div>
+        </div>
+        <div class="nav__menu">
+            <div class="nav__item">
+                <a class="nav__link" href="#">
+                    <span><i class="lnr lnr-cart icon"></i></span>
+                    <span id="carro" class="pill">0</span>
+                </a>
+            </div>
+            <div class="nav__item">
+                <a class="nav__link" href="/signupclient"><i class="lnr lnr-user icon"></i></a>
+            </div>
+        </div>
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+    
+
+    <footer>
+        <div class="footer">
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident eaque incidunt dignissimos optio sunt cupiditate quae, esse tempore veniam illo cumque modi earum. Saepe aliquid voluptatum iusto earum? In accusantium optio non ipsam similique quae assumenda repellat debitis? Autem.</span>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia quod, itaque illum sed magni tempore similique nihil eligendi debitis libero assumenda, optio, suscipit deleniti odit at beatae minima? Temporibus, debitis assumenda. Asperiores consequuntur porro delectus libero et. Est, saepe cum.</span>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus maxime officiis quaerat itaque deleniti ratione labore nemo ad non modi, eligendi odio mollitia nisi? Voluptate, recusandae fugiat nihil aperiam doloribus porro minima reprehenderit eum iste eius! Maiores facilis mollitia est?</span>
+            <span>&#169; Todos los derechos reservados</span>
+        </div>
+    </footer>
+</body>
+
+<script>
+    const carrusel = Carrusel("portada");
+</script>
+
+</html>

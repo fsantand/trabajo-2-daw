@@ -1,0 +1,66 @@
+{% extends 'templateBase.html' %}
+{% load static %}
+
+{% block title %}Heptacore - Detalle{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <section class="section-detalle">
+            <div class="imagenes__detalle">
+                <img src="{% static 'img/zapatilla-negra.jpg' %}" alt="Zapandilla" class="detalle__image">
+                <div class="image_under">
+                    <img src="{% static 'img/zapatilla-blanca.jpg' %}" alt="Zapandilla" class="detalle__image_under">
+                    <img src="{% static 'img/zapatilla-roja.jpg' %}" alt="Zapandilla" class="detalle__image_under">
+                </div>
+            </div>
+
+            <div class="detalle__producto">
+                <h2 class="detalle__title">Zapatilla Nike</h2>
+                <h3 class="detalle__precio">$59.990<span class="detalle__precio-original">$99.990.990</span></h3>
+                <div class="detalle__talla">
+                    <label for="talla">Talla</label>
+                    <select name="talla" id="talla">
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="45">45</option>
+                    </select>
+                </div>
+                <div class="detalle__color">
+                    <label> Color </label>
+                    <div class="color__options">
+                        <a href="#" class="color__option color__option--black"></a>
+                        <a href="#" class="color__option color__option--red"></a>
+                        <a href="#" class="color__option color__option--yellow"></a>
+                        <a href="#" class="color__option color__option--blue"></a>
+                        <a href="#" class="color__option color__option--white"></a>
+                    </div>
+                </div>
+                <button class="btn btn--primary btn--big">Agregar <i class="lnr lnr-cart"></i></button>
+                <div class="detalle__descripcion">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut at esse perspiciatis eveniet saepe, adipisci ipsum. Commodi, autem aspernatur dignissimos reiciendis, consectetur modi quis quas neque magni tenetur qui explicabo libero
+                        facere fugiat quasi harum culpa consequatur ipsa est eum id sequi error. Illo recusandae consequuntur ipsam quasi enim id fugiat incidunt quaerat laborum atque? Asperiores atque, ab ipsam aspernatur delectus labore, qui sunt corrupti
+                        modi esse dolor amet deleniti.</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque id, totam aliquam asperiores quae iusto iure vel quas similique libero voluptatum, et, expedita cumque doloribus deleniti autem? Vitae facere ducimus architecto? Dicta
+                        architecto tempore facilis, numquam molestiae rem totam deleniti dolore delectus dolorum blanditiis odit reiciendis cumque vel. In at deserunt sequi obcaecati eveniet, similique asperiores magnam expedita neque exercitationem eligendi
+                        iure quod nobis enim minus a dignissimos natus ab assumenda. </p>
+                </div>
+            </div>
+        </section>
+        <!-- Componentes -->
+        <!-- Input con icono
+        <div class="input-group">
+            <div class="input-group__icon">
+                <i class="lnr lnr-user"></i>
+            </div>
+            <input type="text" placeholder="Placeholder" name="" id="" class="input-group__input">
+        </div> -->
+
+
+    </div>
+{% endblock %}
