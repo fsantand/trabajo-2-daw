@@ -1,0 +1,55 @@
+html {
+    width: 0 auto;
+}
+
+/** HEADER **/
+
+.header {
+    width: 100%;
+}
+
+.header-img {
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    filter: brightness(0.5)
+}
+
+.header-content {
+    position: absolute;
+    width: 70%;
+    padding-top: 1rem;
+    margin-left: 15%;
+}
+
+.header-nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-nav button{
+    margin-right: 1rem;
+}
+
+.header-logo {
+    display: block;
+    width: 30vw;
+    margin: 0 auto;
+}
+
+
+
+/** MODIFICACION BOOTSTRAP **/
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.input-group {
+    width: 70%!important;
+    margin: 0 auto!important;
+}
+
+
+
+
