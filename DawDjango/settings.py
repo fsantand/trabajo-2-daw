@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-STATICFILES_DIRS = ['../heptacore/templates/static']
+STATICFILES_DIRS = ['D:/GitHub/DawDjango/DawDjango/heptacore/templates/static']
 
 
 # Application definition
