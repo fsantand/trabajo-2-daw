@@ -14,37 +14,52 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
-    <header>
-        <div class="header">
-            <img class="header-img" src="{% static 'img/img_header.jpg' %}" alt="">
-            <div class="header-content">
-                <div class="header-nav">
-                    <nav class="nav">
-                        <button type="button" class="btn btn-outline-light btn-sm">Únetenos</button>
-                        <button type="button" class="btn btn-outline-light btn-sm">Sobre Nosotros</button>
-                    </nav>
-                    <nav class="nav justify-content-end">
-                        <button type="button" class="btn btn-outline-light btn-sm">Registrarse</button>
-                        <button type="button" class="btn btn-outline-light btn-sm">Ingresar</button>
-                    </nav>
-                </div>
-                <img class="header-logo" src="{% static 'img/LOGOINTERLANCER-BLANCO.png' %}" alt="Logo InterLancer Blanco">
-                <form method="GET">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="material-icons md-48">search</i></div>
-                        </div>
-                        <input type="text" class="form-control form-control-lg" id="inlineFormInputGroup" placeholder="¿Qué área buscas?">
-                    </div>
-                </form>
-
-                
-                
+    <header class="header">
+        <img class="header-img" src="{% static 'img/img_header.jpg' %}" alt="">
+        <div class="header-content">
+            <div class="header-nav">
+                <nav class="nav">
+                    <button type="button" class="btn btn-outline-light btn-sm">Únetenos</button>
+                    <button type="button" class="btn btn-outline-light btn-sm">Sobre Nosotros</button>
+                </nav>
+                <nav class="nav justify-content-end">
+                    <button type="button" class="btn btn-outline-light btn-sm">Registrarse</button>
+                    <button type="button" class="btn btn-outline-light btn-sm">Ingresar</button>
+                </nav>
             </div>
+            <img class="header-logo" src="{% static 'img/LOGOINTERLANCER-BLANCO.png' %}" alt="Logo InterLancer Blanco">
+            <form method="GET">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="material-icons md-48">search</i></div>
+                    </div>
+                    <input type="text" class="form-control form-control-lg" id="inlineFormInputGroup" placeholder="¿Qué área buscas?">
+                </div>
+            </form>
+
+            <div class="botones">
+                <button type="button" class="btn btn-primary">General</button>
+                <button type="button" class="btn btn-danger">Cocina</button>
+                <button type="button" class="btn btn-success">Ofimática</button>
+            </div>
+            <div class="btn-ver-mas">
+                <button type="button" class="btn btn-warning btn-lg btn-block">Ver más</button>
+            </div>
+            
+
+            
+             
+
+            
+            
         </div>
     </header>
 
     {% block content %}
+
+    <div class="content">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex adipisci consequatur perferendis doloribus natus neque molestias suscipit autem quod impedit.</p>
+    </div>
 
     {% endblock %}
 

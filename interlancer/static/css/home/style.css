@@ -2,24 +2,48 @@ html {
     width: 0 auto;
 }
 
+/** MODIFICACION BOOTSTRAP **/
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.input-group {
+    width: 70%!important;
+    margin: 0 auto!important;
+}
+
 /** HEADER **/
 
 .header {
-    width: 100%;
+    position: relative;
+    width: 100vw;
+    min-height: auto;
+    height: 60vh;
+    overflow: hidden;
 }
 
 .header-img {
     position: absolute;
+    object-fit: cover;
+    object-position: left;
     z-index: -1;
     width: 100vw;
+    height: 60vh;
     filter: brightness(0.5)
 }
 
 .header-content {
-    position: absolute;
+    display: flex;
+    z-index: 1;
+    flex-direction: column;
+    justify-content: space-between;
     width: 70%;
+    min-height: inherit;
+    height: inherit;
     padding-top: 1rem;
-    margin-left: 15%;
+    padding-bottom: 3rem;
+    margin: 0 auto;
 }
 
 .header-nav{
@@ -33,21 +57,43 @@ html {
 
 .header-logo {
     display: block;
-    width: 30vw;
+    
+    width: 20vw;
     margin: 0 auto;
 }
 
-
-
-/** MODIFICACION BOOTSTRAP **/
-
-.form-control {
-    background-color: rgba(255, 255, 255, 0.7) !important;
+.botones {
+    width: 60%;
+    margin: 1rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    column-gap: 1rem;
 }
 
-.input-group {
-    width: 70%!important;
-    margin: 0 auto!important;
+.botones:first-child {
+    margin-top: .5rem !important;
+}
+
+.btn-ver-mas {
+    margin: 0 auto;
+    width: 40%;
+}
+
+.btn-ver-mas button {
+    color: white;
+    background-color: #ffc049 
+}
+
+.btn-ver-mas button:hover {
+    color: white;
+}
+
+/** CONTENT **/
+
+.content {
+    padding-top: 1rem;
+    width: 70%;
+    margin: 0 auto;
 }
 
 
