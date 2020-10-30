@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'especialidad',
     'usuario',
-    'interlancer.apps.InterlancerConfig'
+    'atencion',
+    'review',
+    'interlancer'
 ]
 
 MIDDLEWARE = [
