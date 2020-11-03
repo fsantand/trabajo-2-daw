@@ -5,7 +5,7 @@ class Especialidad(models.Model):
     especialidad = models.CharField(max_length=255)
 
     class Meta:
-        verbose_name_plural = 'Especialidades'
+        verbose_name_plural = 'especialidades'
     
     def __str__(self):
         return self.especialidad
