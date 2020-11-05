@@ -42,6 +42,7 @@ class Persona(models.Model):
 class Solicitante(Persona):
     saldo = models.PositiveIntegerField(default=0)
 
+
 class Interprete(Persona):
     avatar = models.ImageField(upload_to='avatars/', default='avatars/no-img.jpg')
     esta_verificado = models.BooleanField()

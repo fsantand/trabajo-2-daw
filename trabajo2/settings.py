@@ -132,3 +132,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'images/')
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+LOGIN_URL = '/usuario/login'
