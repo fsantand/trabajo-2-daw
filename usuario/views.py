@@ -21,3 +21,7 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('home')
+
+def dash(request):
+    ctx = {'rut':request.user.solicitante_set.first()}
+    return render(request, 'usuario/dashboard.html',ctx)
