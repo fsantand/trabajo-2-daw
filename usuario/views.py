@@ -1,5 +1,6 @@
 from django.contrib import auth, messages
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def login(request):
@@ -18,10 +19,12 @@ def login(request):
     if request.method == 'GET':
         return render(request, 'usuario/login.html')
 
+@login_required
 def logout(request):
     auth.logout(request)
     return redirect('home')
 
+@login_required
 def dash(request):
     if hasattr(request.user,"interprete"):
         return render(request, 'usuario/interpreteNav.html',{})
