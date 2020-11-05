@@ -5,7 +5,7 @@ from especialidad.models import Especialidad
 
 # Create your models here.
 class Persona(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+    usuario = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     rut = models.CharField(
         max_length=10,
         primary_key=True,
