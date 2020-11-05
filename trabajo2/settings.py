@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'usuario',
     'atencion',
     'review',
-    'interlancer'
+    'interlancer',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'images/')
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+LOGIN_URL = '/usuario/login'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
