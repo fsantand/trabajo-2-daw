@@ -6,7 +6,7 @@ html {
 /** MODIFICACION BOOTSTRAP **/
 
 .form-control {
-    background-color: rgba(255, 255, 255, 0.7) ;
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .input-group {
@@ -73,7 +73,7 @@ html {
 }
 
 .botones:first-child {
-    margin-top: .5rem !important;
+    margin-top: .5rem;
 }
 
 .btn-ver-mas {
@@ -147,11 +147,6 @@ html {
     padding: 1rem 0;
 }
 
-/** ICONOS **/
-
-.icon-md {
-    transform: scale(2) !important;
-}
 
 
 
