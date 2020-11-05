@@ -12,7 +12,7 @@ class Persona(models.Model):
         validators=[
             RegexValidator(r'^\d{7,8}$')
         ])
-    dv = models.CharField(max_length=1, validators=[RegexValidator(r'^[0-9kK]$')])
+    dv = models.CharField(max_length=1, validators=[RegexValidator(r'^[0-9K]$')])
     nombres = models.CharField(max_length=50)
     apellido_paterno = models.CharField(max_length=50)
     apellido_materno = models.CharField(max_length=50)
@@ -22,7 +22,7 @@ class Persona(models.Model):
     )
     correo = models.EmailField()
     biografia = models.TextField(blank=True)
-    calificacion = models.PositiveIntegerField(validators=[MaxValueValidator(5)])
+    calificacion = models.PositiveIntegerField(validators=[MaxValueValidator(5)], default=0)
 
     class Meta:
         abstract = True
@@ -40,7 +40,7 @@ class Persona(models.Model):
         pass
 
 class Solicitante(Persona):
-    saldo = models.PositiveIntegerField()
+    saldo = models.PositiveIntegerField(default=0)
 
 class Interprete(Persona):
     avatar = models.ImageField(upload_to='avatars/', default='avatars/no-img.jpg')
