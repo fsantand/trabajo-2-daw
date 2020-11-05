@@ -23,5 +23,9 @@ def logout(request):
     return redirect('home')
 
 def dash(request):
-    ctx = {}
-    return render(request, 'usuario/dashboard.html',ctx)
+    if hasattr(request.user,"interprete"):
+        return render(request, 'usuario/interpreteNav.html',{})
+    else:
+        return render(request, 'usuario/solicitanteNav.html',{})
+
+    
