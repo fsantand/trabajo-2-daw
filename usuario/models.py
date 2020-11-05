@@ -28,7 +28,7 @@ class Persona(models.Model):
         abstract = True
 
     def __str__(self):
-        return f'{self.apellido_paterno} {self.apellido_materno}, {self.nombres}'
+        return f'{self.nombres} {self.apellido_paterno}'
 
     def get_rut(self):
         return f'{self.rut}-{self.dv}'

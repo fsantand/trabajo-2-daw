@@ -11,7 +11,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'Estas conectado ahora !')
-            return redirect('home')
+            return redirect('dash')
         else:
             messages.error(request, 'Credenciales inexistentes o erroneas')
             return redirect('login')
@@ -23,5 +23,5 @@ def logout(request):
     return redirect('home')
 
 def dash(request):
-    ctx = {'rut':request.user.solicitante_set.first()}
+    ctx = {}
     return render(request, 'usuario/dashboard.html',ctx)
