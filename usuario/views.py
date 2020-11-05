@@ -27,8 +27,8 @@ def logout(request):
 @login_required
 def dash(request):
     if hasattr(request.user,"interprete"):
-        return render(request, 'usuario/interpreteNav.html',{})
+        return render(request, 'usuario/interprete/peticionesActivas.html',{})
     else:
-        return render(request, 'usuario/solicitanteNav.html',{})
+        return render(request, 'usuario/solicitante/solicitanteNav.html',{})
 
     
