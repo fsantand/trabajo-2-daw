@@ -19,7 +19,7 @@ class Atencion(models.Model):
     estado = models.PositiveSmallIntegerField(choices=ATENCION_STATE_CHOICES, default=0)
 
     class Meta:
-        verbose_name_plural = 'Atenciones'
+        verbose_name_plural = 'atenciones'
 
     def __str__(self):
         return f'Atencion #{self.pk} - {self.titulo}'
