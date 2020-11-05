@@ -10,12 +10,12 @@ class Atencion(models.Model):
     ATENCION_STATE_CHOICES = ((0, 'solicitado'), (1, 'atencion'), (2, 'finalizado'))
 
     solicitante = models.ForeignKey(Solicitante, on_delete=models.DO_NOTHING, related_name='atenciones')
-    interprete = models.ForeignKey(Interprete, on_delete=models.DO_NOTHING, related_name='atenciones')
+    interprete = models.ForeignKey(Interprete, on_delete=models.DO_NOTHING, related_name='atenciones', null=True)
     especialidad = models.ForeignKey(Especialidad, on_delete=models.DO_NOTHING, related_name='atenciones')
     titulo = models.CharField(max_length=255)
     descripcion = models.TextField()
-    fecha_atencion = models.DateTimeField(blank=True)
-    fecha_termino = models.DateTimeField(blank=True)
+    fecha_atencion = models.DateTimeField(blank=True, null=True)
+    fecha_termino = models.DateTimeField(blank=True, null=True)
     estado = models.PositiveSmallIntegerField(choices=ATENCION_STATE_CHOICES, default=0)
 
     class Meta:
