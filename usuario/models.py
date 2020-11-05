@@ -1,9 +1,11 @@
 from django.db import models
 from django.core.validators import RegexValidator, MaxValueValidator
+from django.conf import settings
 from especialidad.models import Especialidad
 
 # Create your models here.
 class Persona(models.Model):
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     rut = models.CharField(
         max_length=10,
         primary_key=True,
@@ -30,6 +32,9 @@ class Persona(models.Model):
 
     def get_rut(self):
         return f'{self.rut}-{self.dv}'
+
+    def get_calificacion(self):
+        pass
 
     def actualizar_calificacion(self):
         pass

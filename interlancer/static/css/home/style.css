@@ -1,25 +1,51 @@
 html {
-    width: 0 auto;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/** MODIFICACION BOOTSTRAP **/
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.input-group {
+    width: 70%!important;
+    margin: 0 auto!important;
 }
 
 /** HEADER **/
 
 .header {
-    width: 100%;
+    position: relative;
+    width: 100vw;
+    min-height: auto;
+    height: 60vh;
+    overflow: hidden;
 }
 
 .header-img {
     position: absolute;
+    object-fit: cover;
+    object-position: left;
     z-index: -1;
     width: 100vw;
-    filter: brightness(0.5)
+    height: 60vh;
+    filter: brightness(0.5);
+    top: 0;
 }
 
 .header-content {
-    position: absolute;
+    display: flex;
+    z-index: 1;
+    flex-direction: column;
+    justify-content: space-between;
     width: 70%;
+    min-height: inherit;
+    height: inherit;
     padding-top: 1rem;
-    margin-left: 15%;
+    padding-bottom: 3rem;
+    margin: 0 auto;
 }
 
 .header-nav{
@@ -33,22 +59,100 @@ html {
 
 .header-logo {
     display: block;
-    width: 30vw;
+    
+    width: 20vw;
     margin: 0 auto;
 }
 
-
-
-/** MODIFICACION BOOTSTRAP **/
-
-.form-control {
-    background-color: rgba(255, 255, 255, 0.7) !important;
+.botones {
+    width: 60%;
+    margin: 1rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    column-gap: 1rem;
 }
 
-.input-group {
-    width: 70%!important;
-    margin: 0 auto!important;
+.botones:first-child {
+    margin-top: .5rem !important;
 }
+
+.btn-ver-mas {
+    margin: 0 auto;
+    width: 40%;
+}
+
+.btn-ver-mas button {
+    color: white;
+    background-color: #ffc049 
+}
+
+.btn-ver-mas button:hover {
+    color: white;
+}
+
+/** CONTENT **/
+
+.content {
+    padding-top: 1rem;
+    width: 70%;
+    margin: 0 auto;
+}
+
+/** FOOTER **/
+
+.footer {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 100%;
+    height: 25%;
+    background-color: black;
+    color: white;
+    
+}
+
+.footer-content {
+    width: 70%;
+    height: 25%;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+.footer-nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-nav div.left{
+    display: flex;
+}
+
+.footer-nav ul{
+    list-style-type: none;
+    margin-right: 1rem;
+}
+
+.footer-nav ul:first-of-type{
+    padding-left: 0px;
+}
+
+.footer-nav div.right ul:first-of-type {
+    padding-left: 0px;
+}
+
+.footer-nav div.right ul li {
+    display: inline;
+}
+
+.footer-copyright {
+    border-top: solid #ff9422 1px;
+    padding: 1rem 0;
+}
+
+/** ICONOS **/
+
+.icon-md {
+    transform: scale(2) !important;
+}
+
 
 
 
