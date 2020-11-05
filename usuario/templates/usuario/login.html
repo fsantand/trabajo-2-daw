@@ -36,7 +36,7 @@
         <div class="card-body login-card-body">
             {% include 'partials/_alerts.html' %}
           <p class="login-box-msg">Ingresa con tu cuenta para iniciar sesión</p>
-          <form method="post">
+          <form method="post" action="{% url 'dash'%}">
             {% csrf_token %}
             <div class="input-group mb-3">
               <input
