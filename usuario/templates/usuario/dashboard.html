@@ -200,14 +200,7 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-                        {% block interpreteNav %}
-
-                        {% endblock %}
-
-                        {% block solicitanteNav %}
-
-                        {% endblock %}
-                        
+                        {% block usuario_nav %} {% endblock %}
                         <!--
                             Arbol de items
 
@@ -228,22 +221,34 @@
                                     </li>
                                 </ul>
                             </li>
-
                         -->
-                        
-
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
         </aside>
-
-
-
-
-
-
+        <div class="content-wrapper" style="min-height: 1203.6px;">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <h1 class="m-0 text-dark">
+                                {% block content_title %}{% endblock %}
+                            </h1>
+                        </div>
+                        <div class="col-md-6">
+                            <ol class="breadcrumb float-sm-right">
+                                {% block content_breadcrumb %}{% endblock %}
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
