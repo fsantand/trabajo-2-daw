@@ -67,7 +67,7 @@
                 
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown no-mg">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
+                    <a class="nav-link sp-1" data-toggle="dropdown" href="#">
                         <ion-icon class="icon-md" name="notifications" ></ion-icon>
                         <span class="badge badge-warning navbar-badge">15</span>
                     </a>
@@ -93,10 +93,16 @@
                     </div>
                 </li>
                 <li class="nav-item no-mg">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                    <a class="nav-link sp-1" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                         <ion-icon class="icon-md" name="build"></ion-icon>
                     </a>
                 </li>
+                <li class="nav-item no-mg">
+                    <a class="nav-link sp-1" href="{% url 'logout' %}" role="button">
+                        <ion-icon class="icon-md" name="log-out"></ion-icon>
+                    </a>
+                </li>
+
             </ul>
         </nav>
         <!-- /.navbar -->
