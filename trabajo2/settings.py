@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'review',
     'interlancer',
     'crispy_forms',
+    
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,8 @@ MESSAGE_TAGS = {
 LOGIN_URL = '/usuario/login'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+FIXTURE_DIRS = [
+    '/fixtures/',
+]
+    
