@@ -53,8 +53,12 @@ html {
     justify-content: space-between;
 }
 
-.header-nav button{
+.header-nav nav a{
     margin-right: 1rem;
+}
+
+.header-nav nav a:last-of-type{
+    margin-right: 0;
 }
 
 .header-logo {
