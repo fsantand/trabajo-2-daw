@@ -2,7 +2,7 @@
 
 {% block usuario_nav %}
     <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="{% url 'dash' %}" class="nav-link {% block si %}{% endblock %}">
             <ion-icon name="person-circle" size="large"></ion-icon>
             <p class="nav-link-text">
                 Solicitar Intérprete

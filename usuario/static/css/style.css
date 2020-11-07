@@ -12,3 +12,13 @@
     height: 2.1rem;
 }
 
+.no-mg ion-icon{
+    margin: 0;
+}
+
+.icon-md {
+    font-size: 24px;
+}
+.info {
+    color:white;
+}

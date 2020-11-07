@@ -1,2 +1,13 @@
 {% extends 'usuario/interprete/interpreteNav.html'%}
 
+{% block title %}Peticiones Activas{% endblock title %}
+    
+{% block content_title %}Peticiones Activas{% endblock %}
+
+{% block pa %}active{% endblock %}
+
+{% block content_breadcrumb %} 
+    <li class="breadcrumb-item"><a href="{% url 'dash' %}">Inicio</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Peticiones Activas</li>
+
+{% endblock %}
