@@ -1,9 +1,9 @@
 {% extends 'usuario/dashboard.html' %}
 
 {% block usuario_nav %}
-    <li class="nav-item">
-        <a href="#" class="nav-link">
-            <ion-icon name="person-circle" size="large"></ion-icon>
+    <li class="nav-item ">
+        <a href="{% url 'dash' %}" class="nav-link {% block pa %}{% endblock %}">
+            <ion-icon class="icon-md" name="person-circle" size="large"></ion-icon>
             <p class="nav-link-text">
                 Peticiones Activas
             </p>
