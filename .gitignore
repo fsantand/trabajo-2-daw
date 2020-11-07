@@ -158,3 +158,4 @@ dmypy.json
 
 .vscode
 images/
+fixtures/usuarios_fixture.json

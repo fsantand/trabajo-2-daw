@@ -1,6 +1,7 @@
 .nav-link {
     display: flex;
     align-items: center;
+    padding: .5rem .8rem;
 }
 
 .nav-link ion-icon {
