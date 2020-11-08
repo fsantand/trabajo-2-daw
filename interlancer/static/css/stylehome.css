@@ -144,6 +144,11 @@ html {
 
 .footer-nav div.right ul li {
     display: inline;
+    margin-right: .3rem;
+}
+
+.footer-nav div.right ul li:last-of-type {
+    margin-right: 0;
 }
 
 .footer-copyright {
