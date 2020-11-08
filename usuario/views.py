@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def login(request):
-    
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -21,6 +21,9 @@ def login(request):
             messages.error(request, 'Credenciales inexistentes o erroneas')
             return redirect('login')
     if request.method == 'GET':
+        if request.user.is_authenticated:
+            return redirect('dash')
+        else:    
             return render(request, 'usuario/login.html')
         
 
