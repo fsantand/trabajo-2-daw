@@ -3,6 +3,7 @@ from django.core.validators import RegexValidator, MaxValueValidator
 from django.conf import settings
 from especialidad.models import Especialidad
 
+
 # Create your models here.
 class Persona(models.Model):
     usuario = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
