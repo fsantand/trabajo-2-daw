@@ -4,11 +4,51 @@
 
 {% block content %}
 
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ex delectus cum vero cumque ipsum at quo animi consequatur dolore quasi odio quos iure expedita, itaque natus sint ea repellendus. Pariatur ullam illum magnam, inventore recusandae necessitatibus! In quae accusamus deserunt fugiat recusandae mollitia ipsa similique quos molestiae accusantium at nihil molestias iste earum, assumenda totam quam, quo explicabo numquam?</p>
+<div class="row">
+    {% for interprete in destacados%}
     
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo minus deserunt consequatur, libero a reprehenderit, natus hic accusamus alias deleniti corrupti provident consectetur inventore maiores, fugit similique necessitatibus eaque quos ipsum fugiat error quasi aperiam voluptatem. Quidem unde fuga ducimus!</p>
+    <div class="col-md-6">
+        <!-- Box Comment -->
+        <div class="card card-widget">
+            <div class="card-header pb-0">
+                <div class="user-block">
+                    <img class="img-circle" src="{{interprete.avatar.url}}" alt="User Image">
+                    <span class="username"><a href="#">{{interprete}}</a></span>
+                    <span class="description">
+                        <div class="rating ml--1">
+                            {% for i in r %}
+                                {% if i == interprete.calificacion %}
+                                    <input type="radio" name="rating{{ forloop.parentloop.counter }}" value="{{i}}" id="{{i}}" checked="true" disabled="true"><label for="{{i}}">☆</label>
+                                {% else %}
+                                    <input type="radio" name="rating{{ forloop.parentloop.counter }}" value="{{i}}" id="{{i}}" disabled="true"><label for="{{i}}">☆</label>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </span>
+                </div>
+                <!-- /.user-block -->
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><ion-icon class="icon-md"name="remove"></ion-icon></i>
+                    </button>
+                </div>
+                <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <p>{{interprete.biografia}}</p>
+                <p>Especialidades:</p>
+                <ul>
+                    {% for especialidad in interprete.especialidades.all %}
+                        <li>{{especialidad}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+        </div>
+        <!-- /.card -->
+    </div>
+    {% endfor %}
+
+</div>
 
 {% endblock %}
-
-
-
