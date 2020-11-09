@@ -11,3 +11,77 @@
     <li class="breadcrumb-item active" aria-current="page">Solicitar Intérprete</li>
 
 {% endblock %}
+
+{% block content %}
+
+    <div class="card card-dark" >
+        <!-- /.card-header -->
+        <div class="card-header">
+        <h3 class="card-title">Buscar Área</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form method="GET">
+            <!-- /.card-body -->
+            <div class="card-body">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button type="submit" class="btn btn-danger"><ion-icon name="search-outline" class="icon-md"></ion-icon></button>
+                    </div>
+                    <input type="text" class="form-control form-control-lg" id="inlineFormInputGroup" name="filtro" placeholder="¿Qué área buscas?" >
+                </div>
+            </div>
+            <!-- /.card-body -->
+
+        </form>
+        <!-- form end -->
+        {% if interpretes %}
+            <div class="card-body">
+                <div class="row mb-4">
+                    {% for interprete in interpretes %}
+                        <div class="col-sm-4 mb-4">
+                        <div class="position-relative p-3 bg-gradient-light elevation-2" >
+                            {% if interprete.calificacion == 5 %}
+                                <div class="ribbon-wrapper ribbon-xl">
+                                <div class="ribbon bg-yellow text-lg">
+                                    Destacado
+                                </div>
+                                </div>
+                            {% endif %}
+                            {{interprete}} <br> 
+                            <img class="profile-user-img img-fluid img-circle mt-1 mb-1" src="{{interprete.avatar.url}}" alt="User profile picture" style="height: 88px;width: 88px;"><br>
+                            {{interprete.biografia}}. <br>
+                            <small>Especialidades: 
+                                {% for esp in interprete.especialidades.all %}
+                                    {% if not forloop.last %}
+                                        {{esp}},
+                                    {% else %}
+                                        {{esp}}.
+                                    {% endif %}
+                                {% endfor %}
+                            </small>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="text" name="interprete" value="{{interprete.rut}}" hidden>
+                                <button type="submit" class="btn btn-block btn-warning btn-flat mt-2 mb-2">Solicitar</button> 
+                            </form>
+                            
+                        </div>
+                        </div>
+                        
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    {% block atencion %}
+    
+    {% endblock %}
+
+    
+    
+    
+        
+    
+
+{% endblock %}
