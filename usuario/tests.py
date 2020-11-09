@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import Solicitante, Interprete
+from .validators import rut_valido
 
 # Create your tests here.
 class PersonaTestCase(TestCase):
@@ -32,6 +33,8 @@ class PersonaTestCase(TestCase):
         self.assertEqual(persona2.get_rut(), '8314921-3')
 
     def test_rut_dv_valido(self):
-        persona1 = Solicitante.objects.get(rut='19136636')
-        dv_valido = '0'
-        self.assertTrue(persona1.dv == dv_valido)
+        self.assertTrue(rut_valido('19136636','0')) # True
+        self.assertTrue(rut_valido('19.136.636','0')) # True
+        self.assertFalse(rut_valido('19136636','K')) # False
+        self.assertTrue(rut_valido('8314921','3')) # True
+        self.assertFalse(rut_valido('19136636','K')) # False
