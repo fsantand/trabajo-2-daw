@@ -1,6 +1,10 @@
 from django.contrib import auth, messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
+from .models import Interprete, Solicitante
+from .forms import RegisterForm
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
