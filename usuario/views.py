@@ -1,9 +1,11 @@
 from django.contrib import auth, messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+
 from django.contrib.auth.models import User
 
 from .models import Interprete, Solicitante
+from especialidad.models import Especialidad
 from .forms import RegisterForm
 
 # Create your views here.
@@ -40,11 +42,30 @@ def dash(request):
     if hasattr(request.user,"interprete"):
         return render(request, 'usuario/interprete/peticionesActivas.html',{})
     else:
-        return render(request, 'usuario/solicitante/solicitarInterprete.html',{})
+        return redirect('solicitar_interprete')
 
 @login_required
 def solicitarInterprete(request):
     if hasattr(request.user,"solicitante"):
+        if request.method == 'GET':
+            filtro = request.GET.get('filtro',None)
+            idfiltro = ''
+            especialidades = Especialidad.objects.all()
+            for esp in especialidades:
+                if esp.especialidad == str(filtro):
+                    idfiltro = esp.id
+                    break
+            if not idfiltro == '':
+                interpretes = Interprete.objects.order_by('-calificacion').filter(especialidades__in=[idfiltro])
+            else:
+                interpretes = ''
+            ctx = {'interpretes':interpretes}
+
+            return render(request, 'usuario/solicitante/solicitarInterprete.html',ctx)
+        if request.method == 'POST':
+            intSolicitado = request.POST['interprete']
+            return redirect('solicitar_atencion',intSolicitado)
+
         return render(request, 'usuario/solicitante/solicitarInterprete.html',{})
     else:
         messages.error(request, 'No posee acceso a dicha ruta')
