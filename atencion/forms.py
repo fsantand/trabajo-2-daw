@@ -4,8 +4,11 @@ from .models import Atencion
 class SolicitudForm(forms.ModelForm):
     class Meta:
         model = Atencion
-        exclude = ['interprete', 'fecha_atencion', 'fecha_termino', 'estado']
-        widgets = {'solicitante': forms.HiddenInput()}
+        exclude = ['fecha_inicio_sesion', 'fecha_termino', 'estado','fecha_reserva']
+        widgets = {
+            'interprete' : forms.HiddenInput(),
+            'fecha_creacion' : forms.HiddenInput(),
+        }
     
     def save(self, user = None):
         solicitud = super(SolicitudForm, self).save(commit=False)

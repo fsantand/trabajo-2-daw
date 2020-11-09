@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 from datetime import datetime
 
 from usuario.models import Solicitante, Interprete, Persona
@@ -27,6 +27,9 @@ class Atencion(models.Model):
 
     class Meta:
         verbose_name_plural = 'atenciones'
+
+    """ def get_absolute_url(self):
+        return reverse('atencion:detalle_atencion', kwargs={'id': self.pk}) """
 
     def __str__(self):
         return f'Atencion #{self.pk} - {self.titulo}'
