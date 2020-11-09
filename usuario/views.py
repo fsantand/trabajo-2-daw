@@ -35,7 +35,7 @@ def login(request):
 @login_required
 def logout(request):
     auth.logout(request)
-    return redirect('home')
+    return redirect('/')
 
 @login_required
 def dash(request):
@@ -65,8 +65,6 @@ def solicitarInterprete(request):
         if request.method == 'POST':
             intSolicitado = request.POST['interprete']
             return redirect('solicitar_atencion',intSolicitado)
-
-        return render(request, 'usuario/solicitante/solicitarInterprete.html',{})
     else:
         messages.error(request, 'No posee acceso a dicha ruta')
         return render(request, 'usuario/interprete/peticionesActivas.html',{})
