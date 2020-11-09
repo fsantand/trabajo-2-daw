@@ -159,3 +159,4 @@ dmypy.json
 .vscode
 images/
 fixtures/usuarios_fixture.json
+sent_emails/*
