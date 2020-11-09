@@ -4,7 +4,6 @@ from interlancer import views as i
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('home', i.home, name="home"),
     path('login', views.login, name="login"),
     path('logout', views.logout, name='logout'),
     path('signup', views.signup, name='signup'),
