@@ -11,14 +11,14 @@ class Atencion(models.Model):
 
     # FK
     solicitante = models.ForeignKey(Solicitante, on_delete=models.DO_NOTHING, related_name='atenciones')
-    interprete = models.ForeignKey(Interprete, on_delete=models.DO_NOTHING, related_name='atenciones', null=True)
+    interprete = models.ForeignKey(Interprete, on_delete=models.DO_NOTHING, related_name='atenciones', null=True, blank=True)
     # Datos de la atencion
     especialidad = models.ForeignKey(Especialidad, on_delete=models.DO_NOTHING, related_name='atenciones')
     titulo = models.CharField(max_length=255)
     descripcion = models.TextField()
     duracion = models.DecimalField(max_digits = 3 ,decimal_places = 1, default = 0.5)
     # TODO Modulo reserva 
-    fecha_reserva = models.DateTimeField(null=True)
+    fecha_reserva = models.DateTimeField(blank=True, null=True)
     # Metadatos de procesos
     fecha_inicio_sesion = models.DateTimeField(blank=True, null=True)
     fecha_termino = models.DateTimeField(blank=True, null=True)
@@ -64,4 +64,7 @@ class Atencion(models.Model):
         self.estado = 4
         self.fecha_termino = datetime.now()
         self.save()
+
+    def esta_finalizada(self):
+        return self.estado == 4
             
