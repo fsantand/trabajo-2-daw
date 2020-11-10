@@ -6,7 +6,15 @@
 {% block content_title %}Calificar al cliente{% endblock %}
 
 {% block content %}
+    <h4>Datos del cliente</h4>
+    <dl>
+        <dt>Nombre</dt>
+        <dd>{{ atencion.solicitante.nombres }} {{ atencion.solicitante.apellido_paterno }} </dd>
+        <dt>Atencion</dt>
+        <dd>{{ atencion.titulo }}</dd>
+    </dl>
     <form method="post">
+        {% csrf_token %}
         {{ form | crispy }}
         <button class="btn btn-primary">Terminar Reseña</button>
     </form>

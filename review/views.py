@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
+from django.contrib.auth.models import User
 
 from .models import Review
 from atencion.models import Atencion
@@ -25,7 +26,9 @@ class ReviewView(View):
                 usuario_actual = atencion.interprete
                 template = 'review/interprete_create.html'
             # Valida que el usuario este habilitado para hacer la reseña
-            if usuario_actual != request.user:
+            print(usuario_actual)
+            print(request.user)
+            if usuario_actual.usuario != request.user:
                 return redirect('dash')
             # Verificar si no existe la reseña ya
             if atencion.reviews.filter(usuario = request.user):
@@ -40,9 +43,10 @@ class ReviewView(View):
         form = ReviewForm(request.POST)
         if form.is_valid():
             atencion = get_object_or_404(Atencion, pk = atencion)
+            usuario = User.objects.get(pk = form.cleaned_data['usuario_pk'])
             new_review = Review.objects.create(
                 atencion=atencion,
-                usuario=form.cleaned_data['usuario_pk'],
+                usuario=usuario,
                 review=form.cleaned_data['review'],
                 calificacion=form.cleaned_data['calificacion']
             )
