@@ -115,3 +115,4 @@ def signup(request):
             # Asignar tipo usuario
                 return redirect('login')
     return render(request, 'usuario/signup.html', {'form': RegisterForm()})
+

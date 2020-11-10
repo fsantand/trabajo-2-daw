@@ -9,7 +9,7 @@ class SolicitudForm(forms.ModelForm):
             'solicitante' : forms.HiddenInput(),
             'interprete' : forms.HiddenInput(),
             'fecha_creacion' : forms.HiddenInput(),
-            'fecha_reserva' : forms.TextInput(attrs={'type': 'datetime'}),
+            'fecha_reserva' : forms.TextInput(attrs={'type': 'date'}),
         }
 
     
