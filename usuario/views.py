@@ -117,5 +117,6 @@ def signup(request):
                         tiempo_experiencia=0
                     )
             # Asignar tipo usuario
-                return redirect('login')
+                auth.login(request, new_user)
+                return redirect('dash')
     return render(request, 'usuario/signup.html', {'form': RegisterForm()})
