@@ -1,0 +1,25 @@
+{% extends 'usuario/solicitante/solicitanteNav.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Reseña{% endblock %}
+
+{% block content_title %}Calificar al interprete{% endblock %}
+
+{% block content %}
+<<<<<<< HEAD
+    <h4>Datos del iterprete</h4>
+    <dl>
+        <dt>Nombre</dt>
+        <dd>{{ atencion.interprete.nombres }} {{ atencion.interprete.apellido_paterno }} </dd>
+        <dt>Atencion</dt>
+        <dd>{{ atencion.titulo }}</dd>
+    </dl>
+    <form method="post">
+        {% csrf_token %}
+=======
+    <form method="post">
+>>>>>>> 71357e35f296f0fdad9ea840ee28417d27931f7d
+        {{ form | crispy }}
+        <button class="btn btn-primary">Terminar Reseña</button>
+    </form>
+{% endblock %}

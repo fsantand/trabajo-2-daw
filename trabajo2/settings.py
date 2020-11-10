@@ -28,7 +28,7 @@ SECRET_KEY = '-a*8nnd5gvw#khbug9bl%&du(8qrfrrcha1m1@t3=2vqe*!vms'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 # Application definition
 
@@ -145,3 +145,5 @@ FIXTURE_DIRS = [
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = str(BASE_DIR.joinpath('sent_emails'))
+
+handler404 = 'interlancer.views.page_not_found'
