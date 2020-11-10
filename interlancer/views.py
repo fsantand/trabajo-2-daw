@@ -10,3 +10,6 @@ def home(response):
     r = [5,4,3,2,1]
     ctx = {'destacados':interpretes,'r':r,'iterator':iterator}
     return render(response, 'home/home.html', ctx)
+
+def page_not_found(request, exception):
+    return render(request, 'page_not_found.html')
