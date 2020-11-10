@@ -2,10 +2,18 @@
 
 {% block usuario_nav %}
     <li class="nav-item">
-        <a href="{% url 'dash' %}" class="nav-link {% block si %}{% endblock %}">
+        <a href="{% url 'dash' %}" class="nav-link {% if 'solicitar' in request.path %}active{% endif %}">
             <ion-icon name="person-circle" size="large"></ion-icon>
             <p class="nav-link-text">
                 Solicitar Intérprete
+            </p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'dash' %}" class="nav-link {% if 'atenciones' in request.path %}active{% endif %}">
+            <ion-icon name="person-circle" size="large"></ion-icon>
+            <p class="nav-link-text">
+                Atenciones
             </p>
         </a>
     </li>

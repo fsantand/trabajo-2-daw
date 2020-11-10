@@ -64,8 +64,8 @@ def solicitarInterprete(request):
 
             return render(request, 'usuario/solicitante/solicitarInterprete.html',ctx)
         if request.method == 'POST':
-            intSolicitado = request.POST['interprete']
-            return redirect('solicitar_atencion',intSolicitado)
+            solicitado = request.POST['interprete']
+            return redirect('solicitar_atencion',solicitado)
     else:
         messages.error(request, 'No posee acceso a dicha ruta')
         return render(request, 'usuario/interprete/peticionesActivas.html',{})

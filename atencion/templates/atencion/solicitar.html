@@ -4,13 +4,13 @@
 {% block atencion %}
     <div class="card card-dark">
         <div class="card-header">
-            <h3 class="card-title">Solicitud {{intSolicitado}}</h3>
+            <h3 class="card-title">Solicitud - {{interprete}}</h3>
         </div>
         <div class="card-body">
             <form method="post">
                 {% csrf_token %}
                 {{ form | crispy }}
-                <button type="submit" class="btn btn-primary" value="Save">Solicitar!</button>
+                <button type="submit" class="btn btn-danger" value="Save">Solicitar</button>
             </form>
         </div>
     </div>
