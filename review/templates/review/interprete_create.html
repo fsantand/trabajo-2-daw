@@ -1,0 +1,13 @@
+{% extends 'usuario/interprete/interpreteNav.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Reseña{% endblock %}
+
+{% block content_title %}Calificar al cliente{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {{ form | crispy }}
+        <button class="btn btn-primary">Terminar Reseña</button>
+    </form>
+{% endblock %}
