@@ -6,6 +6,7 @@
 {% block content_title %}Calificar al interprete{% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
     <h4>Datos del iterprete</h4>
     <dl>
         <dt>Nombre</dt>
@@ -15,6 +16,9 @@
     </dl>
     <form method="post">
         {% csrf_token %}
+=======
+    <form method="post">
+>>>>>>> 71357e35f296f0fdad9ea840ee28417d27931f7d
         {{ form | crispy }}
         <button class="btn btn-primary">Terminar Reseña</button>
     </form>

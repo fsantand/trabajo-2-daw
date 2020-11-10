@@ -26,8 +26,6 @@ class ReviewView(View):
                 usuario_actual = atencion.interprete
                 template = 'review/interprete_create.html'
             # Valida que el usuario este habilitado para hacer la reseña
-            print(usuario_actual)
-            print(request.user)
             if usuario_actual.usuario != request.user:
                 return redirect('dash')
             # Verificar si no existe la reseña ya
