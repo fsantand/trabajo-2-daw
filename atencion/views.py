@@ -46,6 +46,6 @@ def detalleAtencion(request):
 
 def listadoAtenciones(request):
     ctx = {}
-    atenciones = Atencion.objects.all()
+    atenciones = request.user.solicitante.atenciones.all()
     ctx['listaAtenciones'] = atenciones
     return render(request, 'atencion/atenciones.html',ctx)
