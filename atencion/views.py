@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 from .forms import SolicitudForm
@@ -38,5 +38,14 @@ class SolicitudView(LoginRequiredMixin,CreateView):
         form.save(self.request.user)
         return super(SolicitudView, self).form_valid(form)
 
+    
+
+
 def detalleAtencion(request):
     return render(request, 'atencion/detalleAtencion.html',{})
+
+def listadoAtenciones(request):
+    ctx = {}
+    atenciones = Atencion.objects.all()
+    ctx['listaAtenciones'] = atenciones
+    return render(request, 'atencion/atenciones.html',ctx)

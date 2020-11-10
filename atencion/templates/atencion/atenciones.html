@@ -1,0 +1,57 @@
+{% extends 'usuario/solicitante/solicitanteNav.html'%}
+
+{% block title %}Listado Atenciones{% endblock title %}
+
+{% block content_title %}Listado Atenciones{% endblock %}
+
+{% block content_breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'dash' %}">Inicio</a></li>
+<li class="breadcrumb-item active" aria-current="page">Listado Atenciones</li>
+{% endblock %}
+
+{% block content %}
+<div class="card card-dark">
+    <!-- Título -->
+    <div class="card-header">
+        <h3 class="card-title">Atenciones</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid"
+                    aria-describedby="example2_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-sort="ascending" aria-label="">
+                                ID</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="">Intérprete</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="">Especialidad</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="">Título</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="">Descripcion</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                aria-label="">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for atencion in listaAtenciones %}
+                        <tr role="row" class="odd">
+                            <td tabindex="0" class="sorting_1">{{atencion.id}}</td>
+                            <td>{{atencion.interprete}}</td>
+                            <td>{{atencion.especialidad}}</td>
+                            <td>{{atencion.titulo}}</td>
+                            <td>{{atencion.descripcion}}</td>
+                            <td>{{atencion.estado}}</td>
+                        </tr>
+                        {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
