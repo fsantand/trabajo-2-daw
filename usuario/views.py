@@ -13,6 +13,8 @@ from .models import Interprete, Solicitante
 from especialidad.models import Especialidad
 from .forms import RegisterForm
 
+
+
 # Create your views here.
 def login(request):
 
@@ -49,19 +51,22 @@ def dash(request):
     else:
         return redirect('solicitar_interprete')
 
+from functools import reduce
+from django.db.models import Q
+from operator import or_
+
 @login_required
 def solicitarInterprete(request):
     if hasattr(request.user,"solicitante"):
         if request.method == 'GET':
             filtro = request.GET.get('filtro',None)
-            idfiltro = ''
+            idfiltro = []
             especialidades = Especialidad.objects.all()
             for esp in especialidades:
-                if esp.especialidad == str(filtro):
-                    idfiltro = esp.id
-                    break
+                if esp.especialidad.casefold().find(str(filtro).casefold()) != -1:
+                    idfiltro.append(esp.id)
             if not idfiltro == '':
-                interpretes = Interprete.objects.order_by('-calificacion').filter(especialidades__in=[idfiltro])
+                interpretes = Interprete.objects.order_by('-calificacion').filter(especialidades__in=idfiltro)
             else:
                 interpretes = ''
             ctx = {'interpretes':interpretes}
