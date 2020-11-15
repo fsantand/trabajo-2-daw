@@ -5,6 +5,7 @@ from .forms import SolicitudForm
 from .models import Atencion
 from usuario.models import Interprete
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
 # Create your views here.
 
@@ -59,6 +60,7 @@ def listadoAtenciones(request):
         if 'delete' in request.POST:
             atencion = Atencion.objects.get(id=id_atencion)
             atencion.cancelar()
+            messages.success(request, 'Se ha cancelado la atención')
             return redirect('listado_atenciones')
 
     
