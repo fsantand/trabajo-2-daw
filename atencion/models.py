@@ -7,7 +7,7 @@ from especialidad.models import Especialidad
 
 # Create your models here.
 class Atencion(models.Model):
-    ATENCION_STATE_CHOICES = ((0, 'solicitado'), (1, 'aceptado'), (2, 'confirmado'), (3, 'sesion'), (4, 'finalizado'))
+    ATENCION_STATE_CHOICES = ((0, 'solicitado'), (1, 'aceptado'), (2, 'confirmado'), (3, 'sesion'), (4, 'finalizado'), (5, 'cancelado'))
 
     # FK
     solicitante = models.ForeignKey(Solicitante, on_delete=models.DO_NOTHING, related_name='atenciones')
@@ -64,6 +64,10 @@ class Atencion(models.Model):
 
         self.estado = 4
         self.fecha_termino = datetime.now()
+        self.save()
+
+    def cancelar(self):
+        self.estado = 5
         self.save()
 
     def esta_finalizada(self):
