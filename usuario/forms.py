@@ -29,9 +29,9 @@ class RegisterForm(forms.Form):
         data = self.cleaned_data['rut']
         rut, dv = data.replace('.','').split('-')
         if not rut_valido(rut, dv):
-            raise ValidationError(_('RUT no valido - Ingrese un rut valido'))
+            raise ValidationError(('RUT no valido - Ingrese un rut valido'))
         return (rut, dv)
 
     def validate(self):
         if self.cleaned_data['password'] != self.cleaned_data['password2']:
-            raise ValidationError(_('Contraseñas distintas - Ingrese nuevamente'))
+            raise ValidationError(('Contraseñas distintas - Ingrese nuevamente'))
