@@ -46,6 +46,19 @@ def detalleAtencion(request):
 
 def listadoAtenciones(request):
     ctx = {}
-    atenciones = Atencion.objects.all()
-    ctx['listaAtenciones'] = atenciones
-    return render(request, 'atencion/atenciones.html',ctx)
+    if request.method == 'GET':
+        atenciones = request.user.solicitante.atenciones.exclude(estado=5)
+        ctx['listaAtenciones'] = atenciones
+        return render(request, 'atencion/atenciones.html',ctx)
+    if request.method == 'POST':
+        id_atencion = request.POST['id']
+        if 'view' in request.POST:
+            pass
+        if 'edit' in request.POST:
+            pass
+        if 'delete' in request.POST:
+            atencion = Atencion.objects.get(id=id_atencion)
+            atencion.cancelar()
+            return redirect('listado_atenciones')
+
+    
