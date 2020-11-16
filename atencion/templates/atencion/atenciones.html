@@ -32,7 +32,7 @@
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1"
                                     aria-label="">Título</th>
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1"
-                                    aria-label="">Descripcion</th>
+                                    aria-label="">Fecha de Creación</th>
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1"
                                     aria-label="">Estado</th>
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1"
@@ -47,7 +47,7 @@
                                 <td>{{atencion.interprete}}</td>
                                 <td>{{atencion.especialidad}}</td>
                                 <td>{{atencion.titulo}}</td>
-                                <td>{{atencion.descripcion}}</td>
+                                <td>{{atencion.fecha_creacion}}</td>
                                 <td>{{atencion.get_estado_display.capitalize}}</td>
                                 <td class="text-right py-0 align-middle">
                                     <form method="POST" class="text-center">
@@ -95,7 +95,7 @@
     <script>
         $(document).ready(function() {
             $('#tabla_atenciones').DataTable({
-                "pagingType": "full_numbers",
+                "pagingType": "simple_numbers",
                 language: {
                     search: "Filtrar",
                     paginate: {

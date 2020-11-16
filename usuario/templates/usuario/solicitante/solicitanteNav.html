@@ -10,7 +10,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="{% url 'listado_atenciones' %}" class="nav-link {% if 'listado' in request.path %}active{% endif %}">
+        <a href="{% url 'listado_atenciones' %}" class="nav-link {% if 'listado' in request.path or 'detalle' in request.path %}active{% endif %}">
             <ion-icon name="person-circle" size="large"></ion-icon>
             <p class="nav-link-text">
                 Listado Atenciones

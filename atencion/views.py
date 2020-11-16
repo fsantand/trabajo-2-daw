@@ -39,11 +39,11 @@ class SolicitudView(LoginRequiredMixin,CreateView):
         form.save(self.request.user)
         return super(SolicitudView, self).form_valid(form)
 
-    
-
-
-def detalleAtencion(request):
-    return render(request, 'atencion/detalleAtencion.html',{})
+def detalleAtencion(request,id):
+    ctx = {}
+    ctx['atencion'] = Atencion.objects.get(id=id)
+    ctx['r'] = [5,4,3,2,1]
+    return render(request, 'atencion/detalleAtencion.html',ctx)
 
 def listadoAtenciones(request):
     ctx = {}
@@ -54,7 +54,7 @@ def listadoAtenciones(request):
     if request.method == 'POST':
         id_atencion = request.POST['id']
         if 'view' in request.POST:
-            pass
+            return redirect('detalle_atencion',id_atencion)
         if 'edit' in request.POST:
             pass
         if 'delete' in request.POST:

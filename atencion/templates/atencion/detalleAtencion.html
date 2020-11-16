@@ -1,0 +1,114 @@
+{% extends 'usuario/solicitante/solicitanteNav.html' %}
+
+{% block title %}Detalle Atención{% endblock title %}
+
+{% block content_title %}Detalle Atención{% endblock %}
+
+{% block content_breadcrumb %} 
+    <li class="breadcrumb-item"><a href="{% url 'dash' %}">Inicio</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'listado_atenciones' %}">Listado Atenciones</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Detalle #{{atencion.id}}</li>
+{% endblock %}
+
+{% block content %}
+    <div class="card card-dark">
+        <!-- Título -->
+        <div class="card-header">
+            <h3 class="card-title">Información de atención</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+                  <div class="row">
+                    <div class="col-12 col-sm-4">
+                      <div class="info-box bg-light">
+                        <div class="info-box-content">
+                          <span class="info-box-text text-center text-muted">Fecha de Creación</span>
+                          <span class="info-box-number text-center text-muted mb-0">{{atencion.fecha_creacion}}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                      <div class="info-box bg-light">
+                        <div class="info-box-content">
+                          <span class="info-box-text text-center text-muted">Fecha de Reserva</span>
+                          <span class="info-box-number text-center text-muted mb-0">{{atencion.fecha_reserva.date}}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                      <div class="info-box 
+                      {% if atencion.estado == 0 %}
+                        bg-blue
+                      {% elif atencion.estado == 1 %}
+                        bg-olive
+                      {% elif atencion.estado == 2 %}
+                        bg-success
+                      {% elif atencion.estado == 3 %}
+                        bg-light
+                      {% endif %}
+                      ">
+                        <div class="info-box-content">
+                          <span class="info-box-text text-center">Estado</span>
+                          <span class="info-box-number text-center">{{atencion.get_estado_display.capitalize}}{% if atencion.estado == 3 %}<ion-icon name="ellipse" class="text-red ml-2"></ion-icon>{% endif %}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <h4>Más información</h4>
+                        
+                          
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
+                  <h3 class="text-primary"><ion-icon name="hand-left-outline"></ion-icon> Intérprete</h3>
+                  <div class="col-12 align-items-stretch">
+                    <div class="card bg-light">
+                      <div class="card-header border-bottom-0 p-0 pt-1 pb-1 col-12 col-sm-8 pl-sm-5 pr-sm-5">
+                        
+                      </div>
+                      <div class="card-body pt-0">
+                        <div class="row">
+                          <div class="col-lg-7 col-sm-8 pt-sm-2 text-sm-center">
+                            <div class="rating pb-sm-4 pb-lg-1">
+                              {% for i in r %}
+                                  {% if i == atencion.interprete.calificacion %}
+                                      <input type="radio" name="rating" value="{{i}}" id="{{i}}" checked="true" disabled="true"><label for="{{i}}">☆</label>
+                                  {% else %}
+                                      <input type="radio" name="rating" value="{{i}}" id="{{i}}" disabled="true"><label for="{{i}}">☆</label>
+                                  {% endif %}
+                              {% endfor %}
+                            </div>
+                            <h2 class="lead"><b>{{atencion.interprete}}</b></h2>
+                            <p class="text-muted text-sm"><b>Especialidades: </b> 
+                            {% for esp in atencion.interprete.especialidades.all %}
+                              {{esp.especialidad.capitalize}} /
+                            {% endfor %}
+                            </p>
+                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                              <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
+                              <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
+                            </ul>
+                          </div>
+                          <div class="col-lg-5 col-sm-3 align-content-sm-start pt-sm-2 align-self-lg-center">
+                            <img src="{{atencion.interprete.avatar.url}}" alt="" class="img-circle img-fluid">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <div class="text-right">
+                          <a href="#" class="btn btn-sm btn-primary d-flex col-lg-4 col-sm-3 ">
+                            <ion-icon name="eye-outline" class="icon-s mr-3 "></ion-icon><span >Ver Perfil</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+{% endblock %}
