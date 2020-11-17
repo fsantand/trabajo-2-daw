@@ -1,0 +1,40 @@
+{% extends 'usuario/solicitante/solicitanteNav.html' %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+{% block title %}Modificar Atención{% endblock title %}
+
+{% block content_title %}Modificar Atención{% endblock %}
+
+{% block content_breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'dash' %}">Inicio</a></li>
+<li class="breadcrumb-item"><a href="{% url 'listado_atenciones' %}">Listado Atenciones</a></li>
+<li class="breadcrumb-item active" aria-current="page">Modificar #{{atencion.id}}</li>
+{% endblock %}
+
+{% block content %}
+<div class="card card-dark">
+    <div class="card-header">
+        <h3 class="card-title">Modificar Atención - {{atencion.id}}</h3>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <div id="div_fecha_creacion" class="form-group"> 
+                <label for="id_fecha_creacion" class=" requiredField">Fecha Creación<span class="asteriskField">*</span></label>
+                <div class=""> 
+                    <input type="text" name="fecha_creacion" value="{{atencion.fecha_creacion | naturalday}}" disabled="true" class="textinput textInput form-control" required="" id="id_fecha_creacion"> 
+                </div>
+            </div>
+            <div id="div_id_estado" class="form-group"> 
+                <label for="id_estado" class=" requiredField">Estado<span class="asteriskField">*</span></label>
+                <div class=""> 
+                    <input type="text" name="estado" value="{{atencion.get_estado_display | title}}" disabled="true" class="textinput textInput form-control" required="" id="id_estado"> 
+                </div>
+            </div>
+            <button type="submit" class="btn btn-danger" value="Update">Modificar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

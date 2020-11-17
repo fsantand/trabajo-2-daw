@@ -1,11 +1,12 @@
-from django.shortcuts import render,redirect
-from django.views.generic import CreateView
+from django.shortcuts import render,redirect,reverse
+from django.views.generic import CreateView,UpdateView
 from django.contrib.auth.decorators import login_required
-from .forms import SolicitudForm
+from .forms import SolicitudForm,ModificarForm
 from .models import Atencion
 from usuario.models import Interprete
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 
 # Create your views here.
 
@@ -39,6 +40,16 @@ class SolicitudView(LoginRequiredMixin,CreateView):
         form.save(self.request.user)
         return super(SolicitudView, self).form_valid(form)
 
+class ModificarAtencionView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
+    model = Atencion
+    template_name = 'atencion/modificarAtencion.html'
+    form_class = ModificarForm
+    success_message = 'La solicitud se ha modificado con éxito'
+    
+    def get_success_url(self, **kwargs):
+        return self.object.get_absolute_url()
+
+
 def detalleAtencion(request,id):
     ctx = {}
     ctx['atencion'] = Atencion.objects.get(id=id)
@@ -56,7 +67,7 @@ def listadoAtenciones(request):
         if 'view' in request.POST:
             return redirect('detalle_atencion',id_atencion)
         if 'edit' in request.POST:
-            pass
+            return redirect('modificar_atencion',id_atencion)
         if 'delete' in request.POST:
             atencion = Atencion.objects.get(id=id_atencion)
             atencion.cancelar()

@@ -85,12 +85,12 @@
                             <h2 class="lead"><b>{{atencion.interprete}}</b></h2>
                             <p class="text-muted text-sm"><b>Especialidades: </b> 
                             {% for esp in atencion.interprete.especialidades.all %}
-                              {{esp.especialidad.capitalize}} /
+                              {{esp.especialidad.capitalize}} {% if not forloop.last %}/{% endif %}
                             {% endfor %}
                             </p>
                             <ul class="ml-4 mb-0 fa-ul text-muted">
-                              <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
-                              <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
+                              <li class="small"><span class="fa-li"><ion-icon name="mail-outline" class="icon-s"></ion-icon></span> E-mail: {{atencion.interprete.correo}}</li>
+                              <li class="small"><span class="fa-li"><ion-icon name="phone-portrait-outline" class="icon-s"></ion-icon></span> Teléfono: {{atencion.interprete.telefono}}</li>
                             </ul>
                           </div>
                           <div class="col-lg-5 col-sm-3 align-content-sm-start pt-sm-2 align-self-lg-center">

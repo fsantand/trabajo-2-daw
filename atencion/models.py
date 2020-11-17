@@ -29,8 +29,8 @@ class Atencion(models.Model):
         verbose_name_plural = 'atenciones'
 
     def get_absolute_url(self):
-        #return reverse('atencion:detalle_atencion', kwargs={'id': self.pk}) 
-        return reverse('listado_atenciones')
+        return reverse('detalle_atencion', kwargs={'id': self.pk}) 
+        #return reverse('listado_atenciones')
 
     def __str__(self):
         return f'Atencion #{self.pk} - {self.titulo}'
