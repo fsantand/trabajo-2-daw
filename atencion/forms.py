@@ -1,5 +1,6 @@
 from django import forms
 from .models import Atencion
+from .widgets import BootstrapDateTimePickerInput
 
 class SolicitudForm(forms.ModelForm):
     class Meta:
@@ -12,18 +13,17 @@ class SolicitudForm(forms.ModelForm):
             'fecha_reserva' : forms.TextInput(attrs={'type': 'date'}),
         }
 
-    
     def __init__(self, *args, **kwargs):
         especialidades = kwargs.pop('especialidades')
         super(SolicitudForm, self).__init__(*args, **kwargs)
         self.fields['especialidad'].queryset = especialidades
-      
-    # def save(self, user = None):
-    #     solicitud = super(SolicitudForm, self).save(commit=False)
-    #     solicitante = None
-    #     if user:
-    #         if user.solicitante:
-    #             solicitante = user.solicitante
-    #     solicitud.solicitante = solicitante
-    #     solicitud.save()
-    #     return solicitud
+
+class ModificarForm(forms.ModelForm):
+    class Meta:
+        model = Atencion
+        exclude = ['fecha_inicio_sesion', 'fecha_termino', 'solicitante', 'interprete', 'estado']
+        widgets = {
+            'fecha_reserva': BootstrapDateTimePickerInput()
+        }
+
+
