@@ -8,9 +8,10 @@
     margin-right: 1rem;
 }
 
-.user-panel img {
+.user-panel img{
     height: 2.1rem;
 }
+
 
 .no-mg ion-icon{
     margin: 0;
@@ -39,5 +40,40 @@
 #buscar-especialidad{
     width: 90%;
     margin: 0 auto;
+}
+
+/** STAR RATING **/
+
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+}
+
+.ml--1 {
+    margin-left: -.8rem!important;
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 1em;
+    font-size: 1.5em;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
 }
 
