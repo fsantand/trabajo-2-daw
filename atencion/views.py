@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect,reverse
+from django.shortcuts import render,redirect,reverse, get_object_or_404
 from django.views.generic import CreateView,UpdateView
 from django.contrib.auth.decorators import login_required
 from .forms import SolicitudForm,ModificarForm
@@ -7,6 +7,7 @@ from usuario.models import Interprete
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from .services import iniciar_sesion_instantanea
 
 # Create your views here.
 
@@ -73,5 +74,16 @@ def listadoAtenciones(request):
             atencion.cancelar()
             messages.success(request, 'Se ha cancelado la atención')
             return redirect('listado_atenciones')
-
-    
+            
+def aceptar_atencion(request, pk):
+    if hasattr(request.user,'interprete'):
+        atencion = get_object_or_404(Atencion, pk = pk)
+        if not hasattr(atencion, 'sesion') and atencion.estado == 2:
+            atencion.confirmar()
+            sesion = iniciar_sesion_instantanea(atencion)
+            messages.success(request, 'Sesion creada con exito! Revise su correo.')
+        else:
+            messages.warning(request, 'Ya existe una sesión activa para esta solicitud.')
+    else:
+        messages.error(request, 'No tienes acceso a esta ruta.')
+    return redirect('dash')

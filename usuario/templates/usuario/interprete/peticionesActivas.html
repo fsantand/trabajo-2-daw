@@ -56,22 +56,17 @@
                               <td>{{atencion.titulo}}</td>
                               <td>{{atencion.fecha_creacion | naturaltime }}</td>
                               <td class="text-right py-0 align-middle">
-                                  <form method="POST" class="text-center">
-                                      {% csrf_token %}
-                                      <input type="text" name="id" hidden value="{{atencion.id}}">
                                       <div class="btn-group p-2 text-white">
                                           <button type="submit" name="view" class="btn btn-info" title="Ver detalles"> 
                                               <ion-icon name="eye" class="icon-s mt-1"></ion-icon>
                                           </button>
-                                          <button type="submit" name="accept" class="btn btn-success" title="Aceptar solicitud">
+                                          <a href="{% url 'aceptar_atencion' atencion.pk %}" role="button" type="submit" class="btn btn-success" title="Aceptar solicitud">
                                               <ion-icon name="checkbox-outline" class="icon-s mt-1"></ion-icon>
-                                          </button>
+                                          </a>
                                           <button type="submit" name="decline" class="btn btn-danger" title="Rechazar solicitud">
                                               <ion-icon name="close" class="icon-s mt-1"></ion-icon>
                                           </button>
                                       </div>
-                                  </form>
-
                               </td>
                           </tr>
                           {% endfor %}
