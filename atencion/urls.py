@@ -6,5 +6,6 @@ urlpatterns = [
     path('detalle/<int:id>', views.detalleAtencion, name="detalle_atencion"),
     path('modificar/<pk>', views.ModificarAtencionView.as_view(), name="modificar_atencion"),
     path('listado',views.listadoAtenciones, name="listado_atenciones"),
-    path('aceptar/<int:pk>', views.aceptar_atencion, name="aceptar_atencion")
+    path('aceptar/<int:pk>', views.aceptar_atencion, name="aceptar_atencion"),
+    path('sesion/<int:pk>', views.SesionInterpreteDetalle.as_view(), name="detalle_sesion")
 ]

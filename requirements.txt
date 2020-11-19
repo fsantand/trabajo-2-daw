@@ -1,7 +1,16 @@
 asgiref==3.2.10
+autopep8==1.5.4
+certifi==2020.11.8
+chardet==3.0.4
 Django==3.1.2
 django-crispy-forms==1.9.2
+idna==2.10
 Pillow==8.0.1
+pycodestyle==2.6.0
+PyJWT==1.7.1
 pytz==2020.1
+requests==2.25.0
 sqlparse==0.4.1
+toml==0.10.2
+urllib3==1.26.2
 zoomus==1.1.3
