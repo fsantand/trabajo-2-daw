@@ -77,7 +77,8 @@ def solicitarInterprete(request):
             return redirect('solicitar_atencion',solicitado)
     else:
         messages.error(request, 'No posee acceso a dicha ruta')
-        return render(request, 'usuario/interprete/peticionesActivas.html',{})
+        print(request.user.interprete.get_solicitudes_pendientes())
+        return render(request, 'usuario/interprete/peticionesActivas.html')
     
 def signup(request):
     if request.method == 'POST':

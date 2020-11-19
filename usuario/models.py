@@ -3,7 +3,6 @@ from django.core.validators import RegexValidator, MaxValueValidator
 from django.conf import settings
 from especialidad.models import Especialidad
 
-
 # Create your models here.
 class Persona(models.Model):
     usuario = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
@@ -49,3 +48,6 @@ class Interprete(Persona):
     esta_verificado = models.BooleanField()
     tiempo_experiencia = models.PositiveIntegerField()
     especialidades = models.ManyToManyField(Especialidad, related_name='interpretes')
+
+    def get_solicitudes_pendientes(self):
+        return self.atenciones.filter(estado = 0)
