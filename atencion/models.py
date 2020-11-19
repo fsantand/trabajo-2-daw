@@ -73,3 +73,12 @@ class Atencion(models.Model):
     def esta_finalizada(self):
         return self.estado == 4
             
+class Sesion(models.Model):
+    sesion_id = models.IntegerField()
+    atencion = models.OneToOneField(Atencion, on_delete=models.CASCADE, related_name='sesion')
+    host_url = models.URLField(verbose_name='Link para iniciar')
+    join_url = models.URLField(verbose_name='Link para unirse')
+
+    def terminar_sesion(self):
+        self.atencion.fecha_termino = datetime.now()
+        self.atencion.save()
