@@ -1,4 +1,5 @@
 {% extends 'usuario/interprete/interpreteNav.html'%}
+{% load humanize %}
 
 {% block title %}Peticiones Activas{% endblock title %}
     
@@ -17,65 +18,78 @@
 
 -->
 
-<div class="row">
-    <div class="col-lg-3 col-6">
-      <!-- small box -->
-      <div class="small-box bg-info">
-        <div class="inner">
-          <h3>150</h3>
-
-          <p>New Orders</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-bag"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-      <!-- small box -->
-      <div class="small-box bg-success">
-        <div class="inner">
-          <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-          <p>Bounce Rate</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-stats-bars"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-      <!-- small box -->
-      <div class="small-box bg-warning">
-        <div class="inner">
-          <h3>44</h3>
-
-          <p>User Registrations</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-person-add"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-      <!-- small box -->
-      <div class="small-box bg-danger">
-        <div class="inner">
-          <h3>65</h3>
-
-          <p>Unique Visitors</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-pie-graph"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <!-- ./col -->
+{% block content %}
+<div class="card card-dark">
+  <!-- Título -->
+  <div class="card-header">
+      <h3 class="card-title">Atenciones</h3>
   </div>
+  <div class="card-body">
+      <div id="tabla_atenciones_wrapper" class="dataTables_wrapper dt-bootstrap4">
+          <div class="row">
+              <div class="col-sm-12">
+                  <table id="tabla_atenciones" class="table table-bordered table-hover  " role="grid"
+                      aria-describedby="tabla_atenciones_info">
+                      <thead>
+                          <tr role="row">
+                              <th class="sorting" tabindex="0" rowspan="1" colspan="1"
+                                  aria-label="ID">#</th>
+                              <th class="sorting" tabindex="0" rowspan="1" colspan="1"
+                                  aria-label="">Solicitante</th>
+                              <th class="sorting" tabindex="0" rowspan="1" colspan="1"
+                                  aria-label="">Especialidad</th>
+                              <th class="sorting" tabindex="0" rowspan="1" colspan="1"
+                                  aria-label="">Título</th>
+                              <th class="sorting" tabindex="0" rowspan="1" colspan="1"
+                                  aria-label="">Fecha de Solicitud</th>
+                              <th class="sorting" tabindex="0" rowspan="1" colspan="1"
+                                  aria-label="">Acciones</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for atencion in user.interprete.get_solicitudes_pendientes %}
+                          <tr role="row" class="{% cycle 'odd' 'even' %}"
+                              >
+                              <td>{{atencion.id}}</td>
+                              <td>{{atencion.solicitante}}</td>
+                              <td>{{atencion.especialidad}}</td>
+                              <td>{{atencion.titulo}}</td>
+                              <td>{{atencion.fecha_creacion | naturaltime }}</td>
+                              <td class="text-right py-0 align-middle">
+                                  <form method="POST" class="text-center">
+                                      {% csrf_token %}
+                                      <input type="text" name="id" hidden value="{{atencion.id}}">
+                                      <div class="btn-group p-2 text-white">
+                                          <button type="submit" name="view" class="btn btn-info" title="Ver detalles"> 
+                                              <ion-icon name="eye" class="icon-s mt-1"></ion-icon>
+                                          </button>
+                                          <button type="submit" name="accept" class="btn btn-success" title="Aceptar solicitud">
+                                              <ion-icon name="checkbox-outline" class="icon-s mt-1"></ion-icon>
+                                          </button>
+                                          <button type="submit" name="decline" class="btn btn-danger" title="Rechazar solicitud">
+                                              <ion-icon name="close" class="icon-s mt-1"></ion-icon>
+                                          </button>
+                                      </div>
+                                  </form>
+
+                              </td>
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                      <tfoot>
+                          <tr role="row">
+                              <th rowspan="1" colspan="1">#</th>
+                              <th rowspan="1" colspan="1">Solicitante</th>
+                              <th rowspan="1" colspan="1">Especialidad</th>
+                              <th rowspan="1" colspan="1">Título</th>
+                              <th rowspan="1" colspan="1">Descripcion</th>
+                              <th rowspan="1" colspan="1">Acciones</th>
+                          </tr>
+                      </tfoot>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
