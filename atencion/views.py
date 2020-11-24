@@ -106,7 +106,7 @@ class SesionInterpreteDetalle(LoginRequiredMixin, InterpreteRequiredMixin, Detai
 @permission_classes((permissions.AllowAny,))
 class AtencionList(APIView):
     def get(self, request, format=None):
-        atenciones = Atencion.objects.all()
+        atenciones = Atencion.objects.exclude(estado=5)
         serializer = AtencionSerializer(atenciones, many=True)
         return Response(serializer.data)
 
@@ -131,4 +131,14 @@ class AtencionDetailApi(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        pass
+        atencion = self.get_object(pk)
+        serializer = AtencionSerializer(atencion, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        atencion = self.get_object(pk)
+        atencion.cancelar()
+        return Response(status=status.HTTP_204_NO_CONTENT)
