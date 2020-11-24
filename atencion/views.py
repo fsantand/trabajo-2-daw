@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect,reverse, get_object_or_404
-from django.views.generic import CreateView,UpdateView
+from django.views.generic import CreateView,UpdateView,DetailView
 from django.contrib.auth.decorators import login_required
 from .forms import SolicitudForm,ModificarForm
-from .models import Atencion
+from .models import Atencion, Sesion
 from usuario.models import Interprete
+from usuario.mixins import InterpreteRequiredMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
@@ -91,3 +92,7 @@ def aceptar_atencion(request, pk):
     else:
         messages.error(request, 'No tienes acceso a esta ruta.')
     return redirect('dash')
+
+class SesionInterpreteDetalle(LoginRequiredMixin, InterpreteRequiredMixin, DetailView):
+    model = Sesion
+    template_name = "sesion/detalle.html"

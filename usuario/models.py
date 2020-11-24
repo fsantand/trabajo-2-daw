@@ -39,6 +39,9 @@ class Persona(models.Model):
     def actualizar_calificacion(self):
         pass
 
+    def get_nombre_completo(self):
+        return f'{self.nombres} {self.apellido_paterno} {self.apellido_materno}'
+
 class Solicitante(Persona):
     saldo = models.PositiveIntegerField(default=0)
 
