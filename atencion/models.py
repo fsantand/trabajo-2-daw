@@ -81,4 +81,5 @@ class Sesion(models.Model):
 
     def terminar_sesion(self):
         self.atencion.fecha_termino = datetime.now()
+        self.estado = 4
         self.atencion.save()
