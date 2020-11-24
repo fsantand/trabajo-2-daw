@@ -41,6 +41,10 @@ class SolicitudView(LoginRequiredMixin,CreateView):
         form.save(self.request.user)
         return super(SolicitudView, self).form_valid(form)
 
+    def get_success_url(self, **kwargs):
+        return self.object.get_absolute_url()
+
+
 class ModificarAtencionView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Atencion
     template_name = 'atencion/modificarAtencion.html'
