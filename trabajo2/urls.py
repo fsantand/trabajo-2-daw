@@ -22,8 +22,10 @@ handler404 = 'interlancer.views.page_not_found'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),
     path('', include('interlancer.urls')),
     path('usuario/', include('usuario.urls')),
     path('atencion/', include('atencion.urls')),
     path('review/', include('review.urls')),
+    path('api/', include('api.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

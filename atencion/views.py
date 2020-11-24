@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,reverse, get_object_or_404
 from django.views.generic import CreateView,UpdateView,DetailView
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse, Http404
 from .forms import SolicitudForm,ModificarForm
 from .models import Atencion, Sesion
 from usuario.models import Interprete
@@ -8,8 +9,13 @@ from usuario.mixins import InterpreteRequiredMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from rest_framework.views import APIView
+from rest_framework.decorators import permission_classes
+from rest_framework import permissions
+from rest_framework.response import Response
+from rest_framework import status
 from .services import iniciar_sesion_instantanea
-
+from .serializers import AtencionSerializer
 # Create your views here.
 
 class SolicitudView(LoginRequiredMixin,CreateView):
@@ -96,3 +102,43 @@ def aceptar_atencion(request, pk):
 class SesionInterpreteDetalle(LoginRequiredMixin, InterpreteRequiredMixin, DetailView):
     model = Sesion
     template_name = "sesion/detalle.html"
+
+@permission_classes((permissions.AllowAny,))
+class AtencionList(APIView):
+    def get(self, request, format=None):
+        atenciones = Atencion.objects.exclude(estado=5)
+        serializer = AtencionSerializer(atenciones, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = AtencionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@permission_classes((permissions.AllowAny,))
+class AtencionDetailApi(APIView):
+    def get_object(self, pk):
+        try:
+            return Atencion.objects.get(pk=pk)
+        except Atencion.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        atencion = self.get_object(pk)
+        serializer = AtencionSerializer(atencion)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        atencion = self.get_object(pk)
+        serializer = AtencionSerializer(atencion, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        atencion = self.get_object(pk)
+        atencion.cancelar()
+        return Response(status=status.HTTP_204_NO_CONTENT)

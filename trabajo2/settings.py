@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'review',
     'interlancer',
     'crispy_forms',
-    
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +148,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = str(BASE_DIR.joinpath('sent_emails'))
 
 handler404 = 'interlancer.views.page_not_found'
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
